@@ -19,7 +19,7 @@ public class autentication extends javax.swing.JFrame {
     public autentication() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.CYAN);
+        this.getContentPane().setBackground(Color.RED);
         //ImageIcon imagen1= new ImageIcon(getClass().getResource("C:\\Users\\jose_\\OneDrive\\Documentos\\NetBeansProjects\\tel_conexion\\src\\tel_conexion"));
         
     }

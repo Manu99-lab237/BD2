@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 
 
 public class Tel_conexion {
-    public static Connection GetConnection()
+    @SuppressWarnings("finally")
+	public static Connection GetConnection()
     {
         Connection conexion=null;
         try
