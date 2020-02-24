@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,7 +52,7 @@ public class autentication extends javax.swing.JFrame {
                 new Principal().setVisible(true);
                 dispose();
             } else {
-                System.out.println("Usuario o contraseña incorrectos");     
+                JOptionPane.showMessageDialog(null, "Usuario y/ó contraseña incorrectos");
             }
 
         } catch (SQLServerException ex) {
