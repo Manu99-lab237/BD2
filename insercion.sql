@@ -23,3 +23,7 @@ go
 
 select * from empleado
 go
+
+
+INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_empleado","fecha_ingreso_empleado","nss_empleado","usuario","clave")
+ values ('REMA','ROLO','HEVI',3000,'2020/02/20',5465546,'fsociety','leavemehere.txt');
