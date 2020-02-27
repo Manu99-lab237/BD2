@@ -28,9 +28,7 @@ public class autentication extends javax.swing.JFrame {
     public autentication() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.RED);
-        
-        //ImageIcon imagen1= new ImageIcon(getClass().getResource("C:\\Users\\jose_\\OneDrive\\Documentos\\NetBeansProjects\\tel_conexion\\src\\tel_conexion"));
+        this.getContentPane().setBackground(Color.cyan);
 
     }
 
@@ -168,7 +166,7 @@ public class autentication extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Tel_conexion con = new Tel_conexion();
-        con.GetConnection();
+       
        
 
     }//GEN-LAST:event_button1MouseClicked

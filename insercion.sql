@@ -1,16 +1,13 @@
 use telematica2020
 go
-SET IDENTITY_INSERT cliente ON
-insert into "cliente"("id_cliente","nom_cliente","app_cliente","apm_cliente","rfc_cliente")
-values(003,'Rodrigo','Rodriguez','Ramos','RORR00407AZ2')
-SET IDENTITY_INSERT cliente OFF
+
+insert into "cliente"("nom_cliente","app_cliente","apm_cliente","rfc_cliente")
+values('Rodrigo','Rodriguez','Ramos','RORR00407AZ2')
+
 go
 
 
-update "cliente"
-	set  apm_cliente = 'Victorino'
-	where [id_cliente]=1;
-go
+
 
 select * from cliente
 go
@@ -27,3 +24,6 @@ go
 
 INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_empleado","fecha_ingreso_empleado","nss_empleado","usuario","clave")
  values ('REMA','ROLO','HEVI',3000,'2020/02/20',5465546,'fsociety','leavemehere.txt');
+
+ INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_empleado","fecha_ingreso_empleado","nss_empleado","usuario","clave")
+ values ('Jose Manuel','Lopez','Victorino',4000,'2020/02/24',653189,'admin','admin2020');
