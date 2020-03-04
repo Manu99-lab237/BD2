@@ -14,7 +14,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.lang.String;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import tel_conexion.Tel_conexion;
 
 /**
  *
@@ -37,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
         
         
     }
+   
     
     
     
@@ -308,7 +311,26 @@ public class Principal extends javax.swing.JFrame {
         } else if(this.passtxt.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Falta llenar el campo clave", "INVALIDO", JOptionPane.WARNING_MESSAGE);
             this.passtxt.requestFocus();
-        } 
+        } else{
+            
+            try{
+                PreparedStatement pstm=con.GetConnection().prepareStatement("{call SP_insertarEmpleado(?,?,?,?,?,?,?,?)}");
+                {
+                pstm.setString(1, nametxt.getText());
+                pstm.setString(2, apptxt.getText());
+                pstm.setString(3, apmtxt.getText());
+                pstm.setString(4, salarytxt.getText());
+                pstm.setString(5, datetxt.getText());
+                pstm.setString(6, nsstxt.getText());
+                pstm.setString(7, usertxt.getText());
+                pstm.setString(8, passtxt.getText());
+                res=pstm.executeQuery();
+            }
+                
+            }catch(Exception e){
+            }
+        
+        }
         
         
         
