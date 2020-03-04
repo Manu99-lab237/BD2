@@ -5,6 +5,7 @@
  */
 package tel_conexion;
 
+import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.lang.String;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -22,11 +25,21 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    ResultSet res;
     Tel_conexion con;
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    public void Cargar_Empleados(){
+        DefaultTableModel modelo=(DefaultTableModel) empTable.getModel();
+        modelo.setRowCount(0);
+        
+        
+    }
+    
+    
+    
     
     
     
@@ -296,10 +309,12 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falta llenar el campo clave", "INVALIDO", JOptionPane.WARNING_MESSAGE);
             this.passtxt.requestFocus();
         } 
-        try{
-            
-        }catch(Exception ex){
-        }
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -333,6 +348,7 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+               
             }
         });
     }

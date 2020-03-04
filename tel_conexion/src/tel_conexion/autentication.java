@@ -31,6 +31,8 @@ public class autentication extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.cyan);
 
     }
+    
+    
 
     void logearse() {
         SQLServerDataSource ds = new SQLServerDataSource();
@@ -60,6 +62,8 @@ public class autentication extends javax.swing.JFrame {
         }
 
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

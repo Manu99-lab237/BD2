@@ -28,3 +28,9 @@ values
 (@nom_empleado,@app_empleado,@apm_empleado,@sueldo_empleado,@fecha_ingreso_empleado,@nss_empleado,@usuario,@clave)
 END
 go
+
+
+
+
+select * from empleado
+go
