@@ -17,6 +17,7 @@ import java.lang.String;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import tel_conexion.Tel_conexion;
+import Procedimientos_Almacenados.sp;
 
 /**
  *
@@ -151,6 +152,11 @@ public class Principal extends javax.swing.JFrame {
                 "id_empleado", "nom_empleado", "app_empleado", "apm_empleado", "sueldo_empleado", "fecha_ingreso_empleado", "nss_empleado", "usuario", "clave"
             }
         ));
+        empTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                empTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(empTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,23 +319,25 @@ public class Principal extends javax.swing.JFrame {
             this.passtxt.requestFocus();
         } else{
             
-            try{
-                PreparedStatement pstm=con.GetConnection().prepareStatement("{call SP_insertarEmpleado(?,?,?,?,?,?,?,?)}");
-                {
-                pstm.setString(1, nametxt.getText());
-                pstm.setString(2, apptxt.getText());
-                pstm.setString(3, apmtxt.getText());
-                pstm.setString(4, salarytxt.getText());
-                pstm.setString(5, datetxt.getText());
-                pstm.setString(6, nsstxt.getText());
-                pstm.setString(7, usertxt.getText());
-                pstm.setString(8, passtxt.getText());
-                res=pstm.executeQuery();
+                String valorpass= new String (passtxt.getPassword());
+                String x = salarytxt.getText();
+                int i=Integer.parseInt(x);
+            try {
+                sp.insertaEmpleado(nametxt.getText(), apptxt.getText(), apmtxt.getText(), i, datetxt.getText(), nsstxt.getText(), usertxt.getText(), valorpass);
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 
-            }catch(Exception e){
-            }
-        
+                nametxt.setText("");
+                apptxt.setText("");
+                apmtxt.setText("");
+                salarytxt.setText("");
+                datetxt.setText("");
+                nsstxt.setText("");
+                usertxt.setText("");
+                passtxt.setText("");
+            
+            
         }
         
         
@@ -338,6 +346,11 @@ public class Principal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void empTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empTableMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_empTableMouseClicked
 
     /**
      * @param args the command line arguments

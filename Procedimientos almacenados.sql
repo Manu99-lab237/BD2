@@ -1,16 +1,17 @@
 USE telematica2020
 go
 
-CREATE PROCEDURE Pa_InsertarEmpleado
+CREATE PROCEDURE SP_insertarEmpleado(
 ---campos a ingresar-----
 @nom_empleado char(30),
 @app_empleado char(30),
 @apm_empleado char(30),
 @sueldo_empleado int,
 @fecha_ingreso_empleado date,
-@nss_empleado int,
-@usuario char,
-@clave char
+@nss_empleado char(11),
+@usuario char(20),
+@clave char(20)
+)
 AS
 BEGIN
 INSERT INTO dbo.empleado
@@ -26,11 +27,15 @@ INSERT INTO dbo.empleado
 
 values
 (@nom_empleado,@app_empleado,@apm_empleado,@sueldo_empleado,@fecha_ingreso_empleado,@nss_empleado,@usuario,@clave)
-END
+end 
 go
 
 
 
 
+
+create procedure mostrar_empleado
+AS
 select * from empleado
 go
+
