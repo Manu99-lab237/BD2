@@ -24,7 +24,6 @@ INSERT INTO dbo.empleado
 ,[nss_empleado]
 ,[usuario]
 ,[clave])
-
 values
 (@nom_empleado,@app_empleado,@apm_empleado,@sueldo_empleado,@fecha_ingreso_empleado,@nss_empleado,@usuario,@clave)
 end 
@@ -34,8 +33,12 @@ go
 
 
 
-create procedure mostrar_empleado
-AS
-select * from empleado
+create procedure SP_eliminar_empleado(@id int)
+AS begin
+delete from empleado where id_empleado=@id
+end
+go
+
+select * from empleado;
 go
 

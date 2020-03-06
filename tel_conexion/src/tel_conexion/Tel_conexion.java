@@ -44,6 +44,19 @@ public class Tel_conexion {
         }
         
    }
+        public static ResultSet Consulta(String consulta)throws SQLException{
+            Connection con = GetConnection();
+            Statement declara;
+            try{
+                declara=con.createStatement();
+                ResultSet respuesta=declara.executeQuery(consulta);
+                return respuesta;
+            }catch (SQLException e){
+                JOptionPane.showMessageDialog(null, "Error" + e.getMessage(),
+                "Error en la conexion", JOptionPane.ERROR_MESSAGE);
+            }
+            return null;
+        }
         
         
         
@@ -66,6 +79,8 @@ public class Tel_conexion {
             
         }
     }
+
+    
 
     
 

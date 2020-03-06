@@ -27,3 +27,7 @@ INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_emplea
 
  INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_empleado","fecha_ingreso_empleado","nss_empleado","usuario","clave")
  values ('Jose Manuel','Lopez','Victorino',4000,'2020/02/24',653189,'admin','admin2020');
+
+ delete from empleado
+ where id_empleado=4;
+ go

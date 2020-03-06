@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import tel_conexion.Tel_conexion;
 import Procedimientos_Almacenados.sp;
+import java.util.Vector;
 
 /**
  *
@@ -31,12 +32,37 @@ public class Principal extends javax.swing.JFrame {
     ResultSet res;
     Tel_conexion con;
     public Principal() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
     public void Cargar_Empleados(){
         DefaultTableModel modelo=(DefaultTableModel) empTable.getModel();
         modelo.setRowCount(0);
+        try {
+            res = tel_conexion.Tel_conexion.Consulta("select * from empleado");
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try{
+            while(res.next()){
+                Vector v =new Vector();
+                v.add(res.getInt(1));
+                v.add(res.getString(2));
+                v.add(res.getString(3));
+                v.add(res.getString(4));
+                v.add(res.getInt(5));
+                v.add(res.getString(6));
+                v.add(res.getString(7));
+                v.add(res.getString(8));
+                v.add(res.getString(9));
+                modelo.addRow(v);
+                empTable.setModel(modelo);
+            }
+        }catch(SQLException e){
+            
+        }
         
         
     }
@@ -81,6 +107,7 @@ public class Principal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         empTable = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +163,11 @@ public class Principal extends javax.swing.JFrame {
         jButton2.setText("Modificar");
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         empTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,6 +191,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(empTable);
 
+        jButton4.setText("Actualizar tabla");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,16 +211,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(531, 531, 531))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(277, 277, 277)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(348, 348, 348))))
+                .addGap(0, 556, Short.MAX_VALUE)
+                .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(531, 531, 531))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +258,14 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(448, 448, 448))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,11 +313,12 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(219, 219, 219))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(218, 218, 218))
         );
 
         pack();
@@ -352,6 +393,24 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_empTableMouseClicked
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Cargar_Empleados();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //ELIMINAR
+        int row=empTable.getSelectedRow();
+        int opc = JOptionPane.showConfirmDialog(this, "¿Estas seguro que desea eliminar el registro seleccionado?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opc==JOptionPane.YES_OPTION){
+            try{
+                sp.eliminaEmpleado(Integer.parseInt(empTable.getValueAt(row, 0).toString()));
+                
+            }catch(SQLException e){
+                
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,6 +459,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nametxt;

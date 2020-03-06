@@ -23,5 +23,13 @@ public class sp {
         entrada.setString(8, h);
         entrada.execute();
     }
+    public static void eliminaEmpleado(int a)throws SQLException{
+        String sql="{call SP_eliminar_Empleado (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setInt(1, a);
+        entrada.execute();
+    }
+    
+    
     
 }
