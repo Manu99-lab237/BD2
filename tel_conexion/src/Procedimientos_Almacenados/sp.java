@@ -30,6 +30,27 @@ public class sp {
         entrada.execute();
     }
     
+    public static void buscarEmpleado(String a)throws SQLException{
+        String sql="{call SP_buscarEmpleado (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setString(1, a);
+        entrada.execute();
+    }
+    
+        public static void modificaEmpleado(String a, String b, String c, int d, String e, String f, String g, String h)throws SQLException{
+        String sql="{call SP_modificarEmpleado (?,?,?,?,?,?,?,?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setString(1, a);
+        entrada.setString(2, b);
+        entrada.setString(3, c);
+        entrada.setInt(4, d);
+        entrada.setString(5, e);
+        entrada.setString(6, f);
+        entrada.setString(7, g);
+        entrada.setString(8, h);
+        entrada.executeUpdate();
     
     
+    
+    }
 }

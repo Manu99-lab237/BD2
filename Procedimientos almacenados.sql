@@ -8,7 +8,7 @@ CREATE PROCEDURE SP_insertarEmpleado(
 @apm_empleado char(30),
 @sueldo_empleado int,
 @fecha_ingreso_empleado date,
-@nss_empleado char(11),
+@nss_empleado varchar(11),
 @usuario char(20),
 @clave char(20)
 )
@@ -30,9 +30,6 @@ end
 go
 
 
-
-
-
 create procedure SP_eliminar_empleado(@id int)
 AS begin
 delete from empleado where id_empleado=@id
@@ -40,5 +37,39 @@ end
 go
 
 select * from empleado;
+go
+
+create procedure SP_modificarEmpleado(
+---CAMPOS A MODIFICAR----
+@id_empleado int,
+@nom_empleado char(30),
+@app_empleado char(30),
+@apm_empleado char(30),
+@sueldo_empleado int,
+@fecha_ingreso_empleado date,
+@nss_empleado varchar(11),
+@usuario char(20),
+@clave char(20)
+)
+AS
+BEGIN
+UPDATE [dbo].[empleado]
+   SET [nom_empleado] = @nom_empleado
+      ,[app_empleado] = @app_empleado
+      ,[apm_empleado] = @apm_empleado
+      ,[sueldo_empleado] = @sueldo_empleado
+      ,[fecha_ingreso_empleado] = @fecha_ingreso_empleado
+      ,[nss_empleado] = @nss_empleado
+      ,[usuario] = @usuario
+      ,[clave] = @clave
+ WHERE empleado.id_empleado=@id_empleado
+ SELECT * FROM empleado where id_empleado=@id_empleado
+END
+GO
+
+create procedure SP_buscarEmpleado(@nombre char)
+AS begin
+select * [except id_empleado] from empleado where nom_empleado=@nombre
+end
 go
 

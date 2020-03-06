@@ -44,7 +44,7 @@ public class Tel_conexion {
         }
         
    }
-        public static ResultSet Consulta(String consulta)throws SQLException{
+        public static ResultSet Consulta(String consulta)throws SQLException{ 
             Connection con = GetConnection();
             Statement declara;
             try{
@@ -57,6 +57,8 @@ public class Tel_conexion {
             }
             return null;
         }
+        
+        
         
         
         
