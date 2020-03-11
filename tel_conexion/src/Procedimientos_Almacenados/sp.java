@@ -30,10 +30,10 @@ public class sp {
         entrada.execute();
     }
     
-    public static void buscarEmpleado(String a)throws SQLException{
+    public static void buscarEmpleado(int a)throws SQLException{
         String sql="{call SP_buscarEmpleado (?)}";
         CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
-        entrada.setString(1, a);
+        entrada.setInt(1, a);
         entrada.execute();
     }
     

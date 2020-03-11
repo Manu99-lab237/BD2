@@ -39,9 +39,8 @@ go
 select * from empleado;
 go
 
-create procedure SP_modificarEmpleado(
----CAMPOS A MODIFICAR----
-@id_empleado int,
+create procedure SP_modificarEmpleado( @id int )
+---CAMPOS A MODIFICAR----(
 @nom_empleado char(30),
 @app_empleado char(30),
 @apm_empleado char(30),
@@ -63,13 +62,15 @@ UPDATE [dbo].[empleado]
       ,[usuario] = @usuario
       ,[clave] = @clave
  WHERE empleado.id_empleado=@id_empleado
- SELECT * FROM empleado where id_empleado=@id_empleado
 END
 GO
 
-create procedure SP_buscarEmpleado(@nombre char)
+
+
+create procedure SP_buscarEmpleado(@id int)
 AS begin
-select * [except id_empleado] from empleado where nom_empleado=@nombre
+select * from empleado where id_empleado=@id
 end
 go
+select *from empleado
 
