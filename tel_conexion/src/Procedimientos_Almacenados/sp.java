@@ -1,4 +1,7 @@
 
+
+
+
 package Procedimientos_Almacenados;
 
 import java.sql.CallableStatement;
@@ -37,7 +40,7 @@ public class sp {
         entrada.execute();
     }
     
-        public static void modificaEmpleado(String a, String b, String c, int d, String e, String f, String g, String h)throws SQLException{
+        /*public static void modificaEmpleado(String a, String b, String c, int d, String e, String f, String g, String h)throws SQLException{
         String sql="{call SP_modificarEmpleado (?,?,?,?,?,?,?,?)}";
         CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
         entrada.setString(1, a);
@@ -52,5 +55,21 @@ public class sp {
     
     
     
+    }*/
+     public static void insertaCliente(String a, String b, String c, String d)throws SQLException{
+        String sql="{call SP_insertarCliente (?,?,?,?)}";
+        CallableStatement client=Tel_conexion.GetConnection().prepareCall(sql);
+        client.setString(1, a);
+        client.setString(2, b);
+        client.setString(3, c);
+        client.setString(4, d);
+        client.execute();
     }
+     public static void eliminacliente(int a)throws SQLException{
+        String sql="{call SP_eliminar_cliente (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setInt(1, a);
+        entrada.execute();
+    }
+     
 }
