@@ -126,6 +126,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         datetxt = new javax.swing.JFormattedTextField();
+        cleanfields = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(77, 5, 232));
@@ -256,6 +257,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        cleanfields.setText("Limpiar Campos");
+        cleanfields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanfieldsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,8 +321,14 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(nsstxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(passtxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, Short.MAX_VALUE)))
-                .addComponent(jLabel2)
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(392, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cleanfields)
+                        .addGap(127, 127, 127))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -361,7 +375,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salary, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salarytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(salarytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cleanfields))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -605,6 +620,19 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchtxtKeyPressed
 
+    private void cleanfieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanfieldsActionPerformed
+       
+            id.setText("");
+            nametxt.setText("");
+            apptxt.setText("");
+            apmtxt.setText("");
+            salarytxt.setText("");
+            datetxt.setText("");
+            nsstxt.setText("");
+            usertxt.setText("");
+            passtxt.setText("");
+    }//GEN-LAST:event_cleanfieldsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -648,6 +676,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel app;
     private javax.swing.JTextField apptxt;
     private javax.swing.JLabel clave;
+    private javax.swing.JButton cleanfields;
     private javax.swing.JLabel date;
     private javax.swing.JFormattedTextField datetxt;
     private javax.swing.JTable empTable;
