@@ -24,6 +24,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.Vector;
 import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,11 +36,16 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    ResultSet res;
+    ResultSet res,rs;
     Tel_conexion con;
+    DefaultTableModel model= new DefaultTableModel();
+    PreparedStatement ps=null;
+    Statement st=null;
     public Principal() {
         
         initComponents();
+        
+        
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.gray);
         Cargar_Empleados();
@@ -230,6 +237,12 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(empTable);
 
         ID.setText("ID:");
+
+        searchtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchtxtKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("Buscar empleado:");
@@ -552,6 +565,45 @@ public class Principal extends javax.swing.JFrame {
         char b=evt.getKeyChar();
         if(Character.isDigit(b)) evt.consume();
     }//GEN-LAST:event_apmtxtKeyTyped
+
+    private void searchtxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchtxtKeyPressed
+        // TODO add your handling code here:
+        String [] titulos={"id_empleado","nom_empleado","app_empleado","apm_empleado","sueldo_empleado","fecha_ingreso_empleado","nss_empleado","usuario","clave"};
+        String [] registros= new String [100];
+        String sql = "SELECT * FROM empleado WHERE id_empleado LIKE '%" + searchtxt.getText() + "%' " + 
+                "OR nom_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR app_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR apm_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR sueldo_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR fecha_ingreso_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR nss_empleado LIKE '%" + searchtxt.getText() + "%'" +
+                "OR usuario LIKE '%" + searchtxt.getText() + "%'" +
+                "OR clave LIKE '%" + searchtxt.getText() + "%'" ;
+        
+        model = new DefaultTableModel(null, titulos);
+        Connection conn=tel_conexion.Tel_conexion.GetConnection();
+        try{
+            st=(Statement) conn.createStatement();
+            rs=st.executeQuery(sql);
+            while(rs.next())
+            {
+                registros[0]=rs.getString("id_empleado");
+                registros[1]=rs.getString("nom_empleado");
+                registros[2]=rs.getString("app_empleado");
+                registros[3]=rs.getString("apm_empleado");
+                registros[4]=rs.getString("sueldo_empleado");
+                registros[5]=rs.getString("fecha_ingreso_empleado");
+                registros[6]=rs.getString("nss_empleado");
+                registros[7]=rs.getString("usuario");
+                registros[8]=rs.getString("clave");
+                model.addRow(registros);
+                
+            }
+            empTable.setModel(model);
+        }catch(SQLException ex){
+            System.out.println("ERROR AL BUSCAR LOS DATOS: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_searchtxtKeyPressed
 
     /**
      * @param args the command line arguments
