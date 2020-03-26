@@ -74,3 +74,45 @@ AS begin
 delete from cliente where id_cliente=@id
 end
 go
+
+CREATE PROCEDURE SP_insertarEstado(
+---campos a ingresar-----
+@nom_estado char(25)
+)
+AS
+BEGIN
+INSERT INTO dbo.estado
+---Campos de las tablas-----
+([nom_estado]
+)
+values
+(@nom_estado)
+end 
+go
+
+create procedure SP_eliminar_estado(@id int)
+AS begin
+delete from estado where id_estado=@id
+end
+go
+
+CREATE PROCEDURE SP_insertarPais(
+---campos a ingresar-----
+@nom_pais char(30)
+)
+AS
+BEGIN
+INSERT INTO dbo.pais
+---Campos de las tablas-----
+([nom_pais]
+)
+values
+(@nom_pais)
+end 
+go
+
+create procedure SP_eliminar_pais(@id int)
+AS begin
+delete from pais where id_pais=@id
+end
+go
