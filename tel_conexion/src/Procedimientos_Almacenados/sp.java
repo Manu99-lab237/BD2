@@ -72,4 +72,30 @@ public class sp {
         entrada.execute();
     }
      
+     public static void insertaEstado(String a)throws SQLException{
+        String sql="{call SP_insertarEstado (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setString(1, a);
+        entrada.execute();
+     }
+     
+     public static void eliminaestado(int a)throws SQLException{
+        String sql="{call SP_eliminar_estado (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setInt(1, a);
+        entrada.execute();
+     }
+     public static void insertapais(String a)throws SQLException{
+        String sql="{call SP_insertarPais (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setString(1, a);
+        entrada.execute();}
+     
+     public static void eliminapais(int a)throws SQLException{
+        String sql="{call SP_eliminar_pais (?)}";
+        CallableStatement entrada=Tel_conexion.GetConnection().prepareCall(sql);
+        entrada.setInt(1, a);
+        entrada.execute();
+     }
+     
 }
