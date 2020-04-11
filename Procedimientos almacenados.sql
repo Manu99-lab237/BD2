@@ -116,3 +116,57 @@ AS begin
 delete from pais where id_pais=@id
 end
 go
+
+CREATE PROCEDURE SP_insertarTelefono(
+---campos a ingresar-----
+@num_tel varchar (10),
+@descripcion_tel char(30)
+)
+AS
+BEGIN
+INSERT INTO dbo.telefono
+---Campos de las tablas-----
+([num_tel]
+,[descripcion_tel])
+values
+(@num_tel,@descripcion_tel)
+end 
+go
+
+CREATE PROCEDURE SP_insertarCorreo(
+---campos a ingresar-----
+@correo char(50),
+@descripcion_correo char(30)
+)
+AS
+BEGIN
+INSERT INTO dbo.correo
+---Campos de las tablas-----
+([correo]
+,[descripcion_correo])
+values
+(@correo, @descripcion_correo)
+end 
+go
+
+CREATE PROCEDURE SP_insertarRetelcli(
+---campos a ingresar-----
+@id_cliente int,
+@id_tel int
+)
+AS
+BEGIN
+INSERT INTO dbo.cliente_telefono
+---Campos de las tablas-----
+([id_cliente]
+,[id_tel])
+values
+(@id_cliente, @id_tel)
+end 
+go
+
+select * from cliente
+
+
+
+

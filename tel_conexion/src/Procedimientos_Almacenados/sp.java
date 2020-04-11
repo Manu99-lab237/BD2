@@ -97,5 +97,21 @@ public class sp {
         entrada.setInt(1, a);
         entrada.execute();
      }
+     public static void insertatel(String a, String b)throws SQLException{
+        String sql="{call SP_insertarTelefono (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setString(1, a);
+        tel.setString(2, b);
+        tel.execute();
      
+    }
+     public static void insertaretelcli(int a, int b)throws SQLException{
+        String sql="{call SP_insertarRetelcli (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setInt(1, a);
+        tel.setInt(2, b);
+        tel.execute();
+     
+    }
+    
 }
