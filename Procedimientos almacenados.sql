@@ -165,8 +165,58 @@ values
 end 
 go
 
-select * from cliente
+select * from cliente_telefono
 
+CREATE PROCEDURE SP_insertarDireccion(
+---campos a ingresar-----
+@calle char(15),
+@num_ext int,
+@num_int int,
+@descripcion char(40)
+)
+AS
+BEGIN
+INSERT INTO dbo.direccion
+---Campos de las tablas-----
+([calle]
+,[num_ext]
+,[num_int]
+,[descripcion])
+values
+(@calle, @num_ext, @num_int, @descripcion)
+end 
+go
 
+CREATE PROCEDURE SP_insertarRedicli(
+---campos a ingresar-----
+@id_dir int,
+@id_cliente int
+)
+AS
+BEGIN
+INSERT INTO dbo.direccion_cliente
+---Campos de las tablas-----
+([id_dir]
+,[id_cliente])
+values
+(@id_dir, @id_cliente)
+end 
+go
 
+CREATE PROCEDURE SP_insertarRecocli(
+---campos a ingresar-----
+@id_correo int,
+@id_cliente int
+)
+AS
+BEGIN
+INSERT INTO dbo.correo_cliente
+---Campos de las tablas-----
+([id_correo]
+,[id_cliente])
+values
+(@id_correo, @id_cliente)
+end 
+go
 
+select * from telefono

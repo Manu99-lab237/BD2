@@ -98,4 +98,52 @@ public class sp {
         entrada.execute();
      }
      
+<<<<<<< Updated upstream:tel_conexion/tel_conexion/src/Procedimientos_Almacenados/sp.java
+=======
+    }
+     public static void insertaretelcli(int a, int b)throws SQLException{
+        String sql="{call SP_insertarRetelcli (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setInt(1, a);
+        tel.setInt(2, b);
+        tel.execute();
+     
+    }
+     
+     public static void inserta_Relacion_direccion_cliente(int a, int b)throws SQLException{
+        String sql="{call SP_insertarRedicli (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setInt(1, a);
+        tel.setInt(2, b);
+        tel.execute();
+     
+    }
+     
+     public static void inserta_Relacion_correo_cliente(int a, int b)throws SQLException{
+        String sql="{call SP_insertarRecocli (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setInt(1, a);
+        tel.setInt(2, b);
+        tel.execute();
+     
+    }
+     public static void inserta_correo(String a, String b)throws SQLException{
+        String sql="{call SP_insertarCorreo (?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setString(1, a);
+        tel.setString(2, b);
+        tel.execute();
+     
+    }
+    public static void inserta_Direccion(String a, int b, int c, String d)throws SQLException{
+        String sql="{call SP_insertarDireccion (?,?,?,?)}";
+        CallableStatement tel=Tel_conexion.GetConnection().prepareCall(sql);
+        tel.setString(1, a);
+        tel.setInt(2, b);
+        tel.setInt(3, c);
+        tel.setString(4, d);
+        tel.execute();
+     
+    }
+>>>>>>> Stashed changes:tel_conexion/src/Procedimientos_Almacenados/sp.java
 }

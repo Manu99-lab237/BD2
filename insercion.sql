@@ -31,3 +31,15 @@ INSERT INTO empleado("nom_empleado","app_empleado","apm_empleado","sueldo_emplea
  delete from empleado
  where id_empleado=4;
  go
+
+ INSERT INTO telefono("num_tel","descripcion_tel")
+ values ('3412389358','Trabajo');
+ go
+
+ select * from telefono
+
+ INSERT INTO cliente_telefono("id_cliente","id_tel")
+ values(6,5);
+
+
+ select * from cliente_telefono
